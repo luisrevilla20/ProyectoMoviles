@@ -44,6 +44,7 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
   },
   createAccount: {
+    color: 'blue',
     height: 30,
   },
   normalContainer: {
@@ -57,7 +58,7 @@ export default StyleSheet.create({
     width: 330,
   },
   createText: {
-    color: '#FF7260',
+    color: 'blue',
     fontSize: 12,
     alignItems: 'center',
     textAlign: 'center',
@@ -77,19 +78,19 @@ export default StyleSheet.create({
   },
   welcome: {
     fontSize: 25,
-    color: '#42B0C9',
+    color: 'green',
     marginTop: 10,
     letterSpacing: 6,
   },
   button: {
     width: 250,
-    borderColor: '#42B0C9',
+    borderColor: 'green',
     borderWidth: 1,
     height: 50,
     padding: 10,
     borderRadius: 24,
     marginTop: 20,
-    backgroundColor: '#42B0C9',
+    backgroundColor: 'green',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

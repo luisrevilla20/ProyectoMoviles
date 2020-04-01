@@ -9,7 +9,7 @@ import {
   Keyboard,
   Alert,
 } from 'react-native';
-import styles, {IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL} from './../styles';
+import styles, {IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL} from './../styles/styles';
 import logo from '../images/logo.png';
 
 export default class Demo extends Component {
@@ -66,7 +66,7 @@ export default class Demo extends Component {
                 <Text
                   button
                   onPress={() =>
-                    this.props.navigation.push('Home', {
+                    this.props.navigation.push('Transactions', {
                       username: this.state.username,
                       password: this.state.password,
                     })
@@ -83,7 +83,7 @@ export default class Demo extends Component {
         </View>
         <TouchableOpacity>
           <View style={styles.createAccount}>
-            <Text style={styles.createText}>Crear una núeva</Text>
+            <Text style={styles.createText} onPress={() =>this.props.navigation.push('Transactions',)}>Sign In</Text>
           </View>
         </TouchableOpacity>
       </View>
