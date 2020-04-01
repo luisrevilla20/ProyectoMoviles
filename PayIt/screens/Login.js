@@ -83,7 +83,7 @@ export default class Demo extends Component {
         </View>
         <TouchableOpacity>
           <View style={styles.createAccount}>
-            <Text style={styles.createText} onPress={() =>this.props.navigation.push('Transactions',)}>Sign In</Text>
+            <Text style={styles.createText} onPress={() =>this.props.navigation.push('Signin',)}>Sign In</Text>
           </View>
         </TouchableOpacity>
       </View>

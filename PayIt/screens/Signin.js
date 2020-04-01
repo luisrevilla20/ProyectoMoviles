@@ -1,104 +1,126 @@
-/* eslint-disable */
-import React, {Component} from 'react';
-import {Share, ActivityIndicator} from 'react-native';
-import { AsyncStorage } from "react-native";
-import { 
-  Container,
-  Header,
-  Content, 
-  View,
-  Footer,
-  FooterTab,
-  Badge,
-  Item,
-  Input,
-  Icon,
+import React, { Component } from 'react';
+import {
+  StyleSheet,
   Text,
-  ScrollView,
+  View,
+  TextInput,
   Button,
-  Left,
-  Body,
-  Right,
-  Title,
-} from 'native-base';
+  TouchableHighlight,
+  Image,
+  Alert
+} from 'react-native';
 
-export default class Home extends Component {
+export default class LoginView extends Component {
+
   constructor(props) {
     super(props);
-
-    global.getData = [];
-    global.counter = 0;
-    
-    this.state = {
-      loading: false,
-      modalVisible: false,
-      getData: [],
-      username:"",
-      password:"",
-    };
+    state = {
+      email   : '',
+      username: '',
+      password: '',
+    }
   }
 
-  static navigationOptions = ({navigation}) => {    
-    return {
-      swipeEnabled: false,
-      gestureResponseDistance: {
-        horizontal: -1,
-        vertical: -1,
-      },
-      header: (
-        <Header searchBar rounded>        
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-        
-          <Item>
-            <Input placeholder="Buscar..." />
-            <Icon name="people" />
-          </Item>
-          
-          <Button transparent>
-            <Icon name="funnel"></Icon>
-          </Button>
-          
-
-        </Header>
-      ),
-
-      headerStyle: {
-        backgroundColor: '#fff',
-      },
-      headerTintColor: '#626262',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    };
-  };
+  onClickListener = (viewId) => {
+    Alert.alert("Alert", "Button pressed "+viewId);
+  }
 
   render() {
-    const { navigation } = this.props;
-    const username = navigation.getParam('username');
-    const password = navigation.getParam('password');
-
-    if (this.state.loading) {
-      return (
-        <View>
-          <ActivityIndicator size="large" color="Grey" />
-        </View>
-      );
-    }
     return (
-      <Container>
-        <Header>
-          <Text>Welcome: {username}</Text>
-          
-        </Header>
+      <View style={styles.container}>
 
-        <Body>
-        <Text>Password: {password}</Text>
-        </Body>
+          <Image source={{href: ' ./../images/logo.png'}} />
 
-        <Content />
-      </Container>
+        <View style={styles.inputContainer}>
+          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+          <TextInput style={styles.inputs}
+              placeholder="Email"
+              keyboardType="email-address"
+              underlineColorAndroid='transparent'
+              onChangeText={(email) => this.setState({email})}/>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+          <TextInput style={styles.inputs}
+              placeholder="Usernam"
+              keyboardType="twitter"
+              underlineColorAndroid='transparent'
+              onChangeText={(email) => this.setState({username})}/>
+        </View>
+        
+        <View style={styles.inputContainer}>
+          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+          <TextInput style={styles.inputs}
+              placeholder="Password"
+              secureTextEntry={true}
+              underlineColorAndroid='transparent'
+              onChangeText={(password) => this.setState({password})}/>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+          <TextInput style={styles.inputs}
+              placeholder="Confirm Password"
+              secureTextEntry={true}
+              underlineColorAndroid='transparent'
+              onChangeText={(password) => this.setState({password})}/>
+        </View>
+
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('register'),
+         this.props.navigation.push('Signin',)}>
+          <Text style={styles.loginText}>Register</Text>
+        </TouchableHighlight>
+       
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#DCDCDC',
+  },
+  inputContainer: {
+      borderBottomColor: '#F5FCFF',
+      backgroundColor: '#FFFFFF',
+      borderRadius:30,
+      borderBottomWidth: 1,
+      width:250,
+      height:45,
+      marginBottom:20,
+      flexDirection: 'row',
+      alignItems:'center'
+  },
+  inputs:{
+      height:45,
+      marginLeft:16,
+      borderBottomColor: '#FFFFFF',
+      flex:1,
+  },
+  inputIcon:{
+    width:30,
+    height:30,
+    marginLeft:15,
+    justifyContent: 'center'
+  },
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+  },
+  loginButton: {
+    backgroundColor: "green",
+  },
+  loginText: {
+    color: 'white',
+  }
+});
+ 
